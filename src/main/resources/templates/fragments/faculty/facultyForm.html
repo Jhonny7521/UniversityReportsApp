@@ -1,0 +1,19 @@
+<meta charset="UTF-8">
+
+<form th:fragment="faculty-form" th:action="@{/faculty/save}" th:object="${faculty}" method="post">  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">          
+	<div class="col">
+		<input type="hidden" th:field="*{id}" >
+		<input type="hidden" th:field="*{createdAt}" >
+		<div class="form-group">
+		  <label for="description">Descripción</label>
+		  <input type="text" class="form-control" th:field="*{description}" id="*{description}" name="description" >
+		  <small class="form-text text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
+		</div>          
+	</div>                  
+  	<div class="d-flex gap-1 flew-row justify-content-start aligin-items-center">
+		<a th:href="@{/faculty/list}" class="btn btn-primary mt-3" role="button" title="Regresar"><i class="bi bi-arrow-left-circle"></i> Volver</a>
+		<button type="submit" class="btn btn-primary mt-3" title="Guardar">Guardar</button>  
+  	</div>
+
+</form>
