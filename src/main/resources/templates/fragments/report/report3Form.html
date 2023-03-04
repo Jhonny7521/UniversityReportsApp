@@ -1,8 +1,16 @@
 <meta charset="UTF-8">
 
-<form th:fragment="report2-form" th:action="@{/report/download/report2}" method="GET">  
+<form th:fragment="report3-form" th:action="@{/report/download/report3}" method="GET">  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">          
 	<div class="col">
+		<div class="form-group">
+			<label for="initDate">Fecha inicio</label>
+			<input type="date" class="form-control" id="initDate" name="initDate" required>
+		</div>
+		<div class="form-group">
+			<label for="endDate">Fecha fin</label>
+			<input type="date" class="form-control" id="endDate" name="endDate" required>
+		</div>
 		<div class="form-group">
 		  <label for="description">TIPO</label>
 		  <select class="form-control" id="tipo" name="tipo" required>

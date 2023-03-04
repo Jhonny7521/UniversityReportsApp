@@ -153,6 +153,11 @@ public class SchoolController {
 		return "report/report2";
 	}
 	
+	@GetMapping("/report3")
+	public String getReport3() {
+		return "report/report3";
+	}
+	
 	
 	@ModelAttribute
 	public void setGenerateSchoolData(Model model) {

@@ -5,7 +5,11 @@
 	<div class="col">
 		<div class="form-group">
 		  <label for="description">TIPO</label>
-		  <input type="text" class="form-control" id="tipo" name="tipo" >
+		  <select class="form-control" id="tipo" name="tipo" required>
+		  	<option value="" disabled selected hidden>Seleccione una opción</option>
+		    <option value="PDF">PDF</option>
+		    <option value="EXCEL">Excel</option>
+		  </select>
 		</div>          
 	</div>                  
   	<div class="d-flex gap-1 flew-row justify-content-start aligin-items-center">

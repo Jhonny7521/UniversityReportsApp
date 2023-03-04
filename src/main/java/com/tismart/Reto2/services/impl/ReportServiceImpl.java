@@ -34,7 +34,7 @@ public class ReportServiceImpl implements IReportService{
 		String extension = params.get("tipo").toString().equalsIgnoreCase(TypeReportEnum.EXCEL.name()) ? ".xlsx" : ".pdf";
 		dto.setFileName(fileName + extension);
 
-		ByteArrayOutputStream stream = reportManager.export(fileName, params.get("tipo").toString(), null,
+		ByteArrayOutputStream stream = reportManager.export(fileName, params.get("tipo").toString(), params,
 				dataSource.getConnection());
 
 		byte[] bs = stream.toByteArray();

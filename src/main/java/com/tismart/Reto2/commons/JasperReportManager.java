@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import org.springframework.core.io.ClassPathResource;
@@ -33,6 +35,21 @@ public class JasperReportManager {
 
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		ClassPathResource resource = new ClassPathResource(REPORT_FOLDER + File.separator + fileName + JASPER);
+		
+		String initDateString = (String) params.get("initDate");
+		String endDateString = (String) params.get("endDate");
+		
+		if (initDateString != null && endDateString != null) {
+			DateTimeFormatter inputFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
+			DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate initDate = LocalDate.parse(initDateString, inputFormatter);
+			LocalDate endDate = LocalDate.parse(endDateString, inputFormatter);
+			String formattedInitDate = initDate.format(outputFormatter);
+			String formattedEndDate = endDate.format(outputFormatter);
+			
+			params.put("initDate", formattedInitDate);
+			params.put("endDate", formattedEndDate);			
+		}
 		
 		InputStream inputStream = resource.getInputStream();
 		JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, con);
